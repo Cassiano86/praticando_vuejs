@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diretiva V-show</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+</head>
+<body>
+    <div id="app">
+        <p 
+            @mouseover="exibir_conteudo = true"
+            @mouseout="exibir_conteudo = false"
+        >
+            Exibindo o tooltip
+        </p>
+        <div v-show="exibir_conteudo">
+            <p>Conteúdo de exibição</p>
+            <span>Para isso serve o v-show</span>
+        </div>
+        
+        <br><br><br><br><br>
+        <h2 style="color:blue;">O v-show é semelhante ao v-if, a única diferença é que o v-show apenas adiciona um display ao elemento, enquanto o v-if tem de renderizar um bloco no DOM. A vantagem do v-show é em relação a velocidade, vale a pena utiliza-lo em situações que não afete a aplicação ou a segurança</h2>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                exibir_conteudo : false,
+            },
+            methods: {
+    
+            }
+        });
+    </script>
+</body>
+</html>

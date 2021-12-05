@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Condicional V-if</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+</head>
+<body>
+    <div id="app">
+        <h5>Exibindo apenas a diretiva v-if</h5>
+        <button @click="exibir_saldo = !exibir_saldo">
+            <span v-if="!exibir_saldo">Exibir saldo</span>
+            <span v-if="exibir_saldo">Ocultar saldo</span>
+        </button><br><br>  
+        Saldo:<span v-if="exibir_saldo">{{ saldo }}</span>
+        
+        <hr>
+
+        <h5>Exibindo a diretiva v-if / v-else</h5>
+        <p>Digite sua idade</p>
+        <input type="number" id="idade" @change="verificarIdade()" :min="minimo">
+        <button @change="verificarIdade()">Verificar</button><br><br>  
+        Situação: <span v-if="idade < 18">Menor de idade</span>
+                  <span v-else>Maior de idade</span>
+        <hr>
+
+        <h5>Exibindo a diretiva v-if / v-else-if</h5>
+        <p>Digite sua nota</p>
+        <input type="number" id="nota" @change="verificarNota()" :min="minimo">
+        <button @change="verificarNota()">Verificar</button><br><br>  
+        Situação:   
+                    <span v-if="nota == null">Aguardando</span>
+                    <span v-else-if="nota >= 7 && nota <= 10">Aprovado</span>
+                    <span v-else-if="nota >= 5 && nota < 7">Recuperação</span>
+                    <span v-else-if="nota >= 0 && nota < 5">Reprovado</span>
+                    <span v-else="">valor inválido</span>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                exibir_saldo: false,
+                saldo : parseFloat(1000.00),
+                idade : null,                
+                nota  : null,
+                minimo : 0,
+            },
+            methods: {
+                verificarIdade(){
+                    this.idade = idade.value;
+                },
+                verificarNota(){
+                    this.nota = nota.value;
+                }
+            }
+        });
+    </script>
+</body>
+</html>

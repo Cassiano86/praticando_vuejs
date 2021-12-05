@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>V-Bind</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+    <style>
+        .verde{
+            color:green;
+        }
+
+        .vermelho{
+            color:red;
+        }
+
+        .negrito{
+            font-weight:bolder;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <a :href="site" target='_blank'>Site</a>
+        <p class='negrito' :class="checked ? verde : vermelho">Digite seu texto</p>
+        <input type="text" :placeholder="placeholder" name="" id=""> 
+        <input type="checkbox" @click="verificarChecked()" id="scales" name="scales" :checked='checked'><br><br><br><br><br><br><br><br> 
+        <img 
+            :src="diretorio+fotos[0].foto" 
+             :alt="fotos[0].alt ? fotos[0].alt : 'Sem descrição'" 
+             @mouseover.once="mostrarDescricao(fotos[0].alt)"
+        >
+
+        <img 
+            :src="diretorio+fotos[1].foto" 
+            :alt="fotos[1].alt ? fotos[1].alt : 'Sem descrição'"
+            @click='mostrarDescricao(fotos[1].alt)'
+        >
+
+        <img 
+            :src="diretorio+fotos[2].foto" 
+            :alt="fotos[2].alt ? fotos[2].alt : 'Sem descrição'"
+            @dblclick="mostrarDescricao(fotos[2].alt)"
+        >
+    </div>
+
+    <script>
+        new Vue({
+            el : '#app',
+            data : {
+                site: 'https://www.guiavalehistorico.com',
+                verde:'verde',
+                vermelho:'vermelho',
+                placeholder: 'Digite um texto',
+                checked:false,
+                diretorio: 'img/',
+                fotos : [
+                            {foto : 'vuejs_logo.png',   alt : 'Logo do Vuejs'},
+                            {foto : 'laravel_logo.png', alt : 'Logo do Laravel'},
+                            {foto : 'revolver_logo.jpg',alt : 'Logo do albúm revolver'}
+                        ],
+            },
+            methods : {
+                verificarChecked() {
+                    this.checked ? this.checked=false : this.checked=true;
+                },
+                mostrarDescricao(e){
+                    alert(e);
+                }
+            }
+        });    
+    </script>
+</body>
+</html>

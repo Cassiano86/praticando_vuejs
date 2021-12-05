@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aplicando methods</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+</head>
+<body>
+    <div id="app">
+        {{ somar(2, 8) }}
+    </div>
+
+    <script>
+        new Vue({
+            el : '#app',
+            data : {
+                mensagem : 'teste'
+            },
+            methods : {
+                //Forma mais enxuta de acessar um método pelo Vuejs
+                somar(x,y) {
+                    return x + y + 20;
+                }
+            },
+        });
+    </script>
+</body>
+</html>

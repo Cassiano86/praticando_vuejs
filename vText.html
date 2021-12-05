@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>V-text</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+</head>
+<body>
+    <div id="app">
+        <span v-text="elemento_v_text"></span>
+        <br><br><br>
+        <h5 style='color:blue;'>O v-text insere data-bindigs dentro dos elementos HTML em formato de texto, é semelhante ao InnerHTML do javascript</h5>    
+    </div>
+
+    <script>
+        new Vue({
+            el : '#app',
+            data : {
+                elemento_v_text: 'Esse conteúdo foi inserido pela diretiva v-text'
+            },
+            methods : {}
+        });    
+    </script>
+</body>
+</html>

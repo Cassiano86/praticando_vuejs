@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selecionando elementos HTML e suas propriedades por ID</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+</head>
+<body>
+    <div id="app">
+        <h5>Neste exemplo será possível entender que um elemento filho da Div #app poderá ser recuperado dentro de um V-on apenas selecionando seu ID, uma vez capturado o ID do elemento de escolha, será possível acessar seu: conteúdo, atributos e propriedades</h5>
+        <input type="text" name="inputTexto" id="inputTexto"> 
+        <button @click="capturarElementoFilho()">Clique aqui</button>  <br/>
+        {{ mensagem }}
+    </div>
+    <script>
+        new Vue({
+            el : '#app',
+            data : {
+                mensagem : '',
+            },
+            methods : {
+                capturarElementoFilho() {
+                    this.mensagem = 'O valor do elemento '+inputTexto.id+' é: '+inputTexto.value;
+                    console.log(inputTexto.type);
+                    setTimeout(function(){
+                        this.mensagem = '';
+                    }.bind(this),3500);
+                }
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vOn - Aplicando modificadores</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+</head>
+<body>
+    <div id="app">
+        <h4>Aplicando a diretiva prevent a um v-on, isso impedirá de acessar o site</h4>
+        <a href="https://www.guiavalehistorico.com" target="_blank" @click.prevent="exibirMensagemPreventiva()">
+            Ir para o meu site
+        </a><br> 
+        {{ msg }}
+        
+        <hr>
+        
+        <h4>Aplicando a diretiva once a um v-on, o elemento só disparará o evento uma única vez</h4>
+        <button @click.once="exibirCliques()">Clique aqui</button> <br> 
+        Número de cliques: {{ cliques }}
+
+        <hr>
+        
+        <h4>Aplicando a diretiva prevent commbinada com once a um v-on permite que a ação seja prevenida uma única vez e depois siga seu padrão</h4>
+        <form @submit.prevent.once="previnirUnicaVez()">
+            <button type="submit">Enviar</button> <br> 
+        </form>
+        {{ msg_submit }}
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+
+            data: {
+                msg         : '',
+                cliques     : 0,
+                msg_submit  : ''
+            },
+    
+            methods: {
+                exibirMensagemPreventiva(){
+                    this.msg = "O link não será carregado";
+                },
+
+                exibirCliques(){
+                    this.cliques++;
+                },
+
+                previnirUnicaVez(){
+                    this.msg_submit = "O Evento só foi prevenido dessa vez, na próxima o formulário será submetido";
+                }
+            }
+        });
+    </script>
+</body>
+</html>
