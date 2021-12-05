@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interagindo com o laço for</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="c in comentarios" :key="c.id">
+               {{c.id}} - {{c.comentario}}
+            </li>
+        </ul>
+        <button @click="adicionarElemento()">Adicionar elemento</button>
+        <button @click="removerElemento()">Remover elemento</button>
+        <button @click="modificarElemento()">Modificar elemento</button>
+
+        <h5>Para alterar um elemento no Vue.js é necessário que seja utilizado métodos javascript. <br>
+            Para adicionarmos um elemento utilizamos o método push.<br>
+            Para removermos um elemento, utilizamos o método pop.<br>
+            Para modificarmos um elemento utilizamos o método nativo do vue $set que recebe 3 parâmetros: o data-binding que deve ser alterado, o índice e o conteúdo a ser inserido
+        </h5>
+    </div>
+
+    <script>
+        new Vue({
+            el : '#app',
+            data : {
+                comentarios : [
+                    {id: 1, comentario: 'Comentario 1'},
+                    {id: 2, comentario: 'Comentario 2'},
+                    {id: 3, comentario: 'Comentario 3'},
+                ]
+            },
+            methods : {
+                adicionarElemento() {
+                    this.comentarios.push({id: parseInt(this.comentarios.length + 1), comentario: 'Novo comentário'});
+                },
+
+                removerElemento() {
+                    this.comentarios.pop();
+                },
+
+                modificarElemento() {
+                    this.$set(this.comentarios, 1 , {id: 2, comentario: 'Comentário 2 atualizado'});
+                }
+            },
+        });
+    </script>
+</body>
+</html>

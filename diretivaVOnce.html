@@ -9,15 +9,35 @@
 </head>
 <body>
     <div id="app">
-        
+        <p v-once>Saldo inicial: {{ parseFloat(saldo).toFixed(2) }}</p>
+        <p>Saldo atualizado: {{ parseFloat(saldo).toFixed(2) }}</p>
+        <input type="number" id="valor" step='0.01' :min="min">
+        <button @click="creditar()">Creditar</button>
+        <button @click="debitar()">Debitar</button>
+        <br><br><br>
+        h5{A diretiva v-once permite renderizar um data-binding apenas uma vez, no exemplo acima caso não houvesse aplicado a diretiva v-once o saldo inicial seria renderizo quando as funções de creditar e debitar fossem acionadas}
     </div>
 
     <script>
         new Vue({
             el : '#app',
             data : {
+                saldo : 1100,
+                min: 0
             },
-            methods : {}
+            methods : {
+                creditar() {
+                    if(valor.value.length != 0 && valor.value >= 0){
+                        this.saldo +=  Number(parseFloat(valor.value).toFixed(2));
+                    }
+                },
+
+                debitar() {
+                    if(valor.value.length != 0 && valor.value >= 0){
+                        this.saldo -= Number(parseFloat(valor.value).toFixed(2));
+                    }
+                }
+            }
         });    
     </script>
 </body>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Renderização de listas</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="p in publicacoes" style="border: solid 1px; padding:5px; margin-bottom:10px;" :key="p.id">
+                {{p.publicacao}}
+                <div>
+                    <input type="text" name="" id="comentarios">
+                </div>
+            </li>
+        </ul>
+        <button @click="misturarArray()">Misturar</button>
+        <br><br><br><br>
+        <h5 style="color: #756aaa">O atributo key garante a integridade e permanencia de um registro dentro do laço for, caso não houvesse o atributo 'key', os comentários não acompanhariam a publicação, pois o vue.js não entende que o bloco deve ser renderizado junto. Quem traz essa percepção ao framework é o atributo key</h5>    
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                publicacoes: [
+                    {id : 1, publicacao : 'Publicações 1'},
+                    {id : 2, publicacao : 'Publicações 2'},
+                    {id : 3, publicacao : 'Publicações 3'}
+                ],
+            },
+            methods: {
+                misturarArray(){
+                    let misturado = [];
+
+                    misturado[0] = this.publicacoes[1];
+                    misturado[1] = this.publicacoes[2];
+                    misturado[2] = this.publicacoes[0];
+
+                    this.publicacoes = misturado;
+                }
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>diretiva vFor</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+</head>
+<body>
+    <div id="app">
+        <h4 style="color:#3312ff;">Cursos disponíveis - Aplicando o modelo conceitual</h4>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Curso</th>
+                    <th>Descrição</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="(curso, key) in cursos">
+                    <td>{{key}}</td>
+                    <td>{{curso.titulo}}</td>
+                    <td>{{curso.descricao}}</td>
+                </tr>
+            </tbody>
+        </table>    
+
+        <h4 style="color:#6144aa;">Cursos disponíveis - Aplicando o destructuring assignment</h4>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Curso</th>
+                    <th>Descrição</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="({titulo,descricao}, key) in cursos">
+                    <td>{{key}}</td>
+                    <td>{{titulo}}</td>
+                    <td>{{descricao}}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>Saiba mais sobre destructuring assignment <a href="https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment" target="_blank">Clicando aqui</a></p>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                cursos : {
+                    1000: {
+                        titulo: 'Laravel',
+                        descricao: 'Domine o framework backend mais poderoso do mundo'
+                    },
+
+                    1001: {
+                        titulo: 'Vue.js',
+                        descricao: 'Domine o framework frontend que mais vem ganhando espaço no mercado'
+                    }
+                },
+            },
+            methods: {
+
+            }
+        });
+    </script>
+</body>
+</html>

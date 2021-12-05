@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>diretiva vFor</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+</head>
+<body>
+    <div id="app">
+        <h4 style="color:#3312ff;">Cursos disponíveis - Aplicando com double mustach</h4>
+        <ul>
+            <li v-for="(curso, key) in cursos">{{ key }} - {{ curso }}</li>
+        </ul>
+
+        <h4 style="color:#6144aa;">Professores- Aplicando a diretiva v-text</h4>
+        <ul>
+            <li v-for="(professor, key) in professores" v-text="key +'-'+ professor"></li>
+        </ul>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                cursos : ['Laravel','Vue.js','PHP','Angular','JWT','HTML5 e CSS3'],
+                professores : [
+                                'Cassiano Cavalheiro Fernandes',
+                                'Camila Cavalheiro Fernandes',
+                                'Larissa Ridan',
+                                'Antoniel Guedes',
+                                'Noob Saibot' 
+                            ],
+            },
+            methods: {
+
+            }
+        });
+    </script>
+</body>
+</html>
