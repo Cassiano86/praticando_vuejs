@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aplicando methods</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+</head>
+<body>
+    <div id="app">
+        <input type="text" name="" v-model="paciente" id="paciente"><br>
+        <ul>
+            <li v-for="l in lista">
+                {{l.nome}} - {{l.idade}}
+            </li>
+        </ul>
+    </div>
+
+    <script>
+        new Vue({
+            el : '#app',
+            data : {
+                paciente : '',
+                pacientes:  [
+                                {nome : 'Cassiano', idade : '12'},
+                                {nome : 'Camila', idade : '14'},
+                                {nome : 'Larissa', idade : '52'},
+                                {nome : 'Antoniel', idade : '15'},
+                                {nome : 'Samuel', idade : '67'}
+                            ],
+                lista: []
+            },
+            methods : {
+            },
+            computed: {
+
+            },
+            watch: {
+                // O objeto watch tem que ser correspondente ao data que ele está assistindo, lembrando que ele retorna 2 valores: o valor antigo e o valor novo
+                paciente(newValue) {
+                    this.lista = this.pacientes.filter(paciente => paciente.nome.match(newValue));
+                }
+            }
+        });
+    </script>
+</body>
+</html>

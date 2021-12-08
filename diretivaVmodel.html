@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Propiedades computadas</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+</head>
+<body>
+    <div id="app">
+        {{nome}} <br>
+        <input type="text" id="nome" v-model="nome">
+        <hr>
+        <input type="radio" value="m" v-model="sexo" id="sexo_m">Masculino
+        <input type="radio" value="f" v-model="sexo" id="sexo_f">Feminino<br>
+        {{sexo}}
+        <hr>
+        <select name="plano" v-model="plano" id="">
+            <option disabled>-- Selecione o plano --</option>
+            <option value="1">Ouro</option>
+            <option value="2">Prata</option>
+            <option value="3">Bronze</option>
+        </select><br>
+        {{plano}}
+        <hr>
+        <input type="checkbox" v-model="doencas" value="Peste negra"    name="" id="">Peste negra
+        <input type="checkbox" v-model="doencas" value="Peste bubonica" name="" id="">Peste bubonica
+        <input type="checkbox" v-model="doencas" value="Febre do rato"  name="" id="">Febre do rato<br>
+        <span v-if="doencas.length > 0">
+            {{doencas}}
+        </span>
+        <hr>
+        <textarea v-model="diagnostico" name="" id="" cols="30" rows="10"></textarea><br>
+        {{diagnostico}}
+
+        <hr>
+        <h4 style="color: #5522ab;">O v-model nada mais é do que a junção do v-bind com um v-on ao mesmo tempo, é uma forma de manter o data-bind sincronizado na vue quanto template.</h4>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                nome : '',
+                sexo : '',
+                plano: '',
+                doencas: [],
+                diagnostico: ''
+            },
+            methods: {
+                
+            }, computed: {
+                
+            }
+        });
+    </script>
+</body>
+</html>

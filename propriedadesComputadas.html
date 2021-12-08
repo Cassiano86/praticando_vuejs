@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Propiedades computadas</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+</head>
+<body>
+    <div id="app">
+        <h4>Cadastrar pacientes</h4>
+        <input type="text" name="inputNome" id="inputNome" required><br/>
+        <input type="number" name="inputIdade" id="inputIdade" required><br/>
+        <select name="inputPlano" id="inputPlano"><br/>
+            <option value="Ouro">Ouro</option>
+            <option value="Prata">Prata</option>
+            <option value="Bronze">Bronze</option>
+        </select><br/>
+        <button @click="adicionarPaciente()">Cadastrar</button>
+        
+        <hr>
+        <h4>Pacientes ouro</h4>
+        <div v-if="pacientes.length > 0">
+            <!-- Buscando de acordo com o objeto computado -->
+            <p v-for="p in pacientesOuro">
+                {{p.nome}}
+            </p>
+        </div>
+        <div v-else>
+            <i>Nenhum paciente cadastrado até o momento</i>
+        </div>
+
+        <hr>
+        <h4>Ultimo paciente cadastrado</h4>
+        <div v-if="pacientes.length > 0">
+            <p>{{adicionarUltimoPaciente}}</p>
+        </div>
+        <div v-else>
+            <i>Nenhum paciente cadastrado até o momento</i>
+        </div>
+
+        <hr>        
+        <h4>Pacientes cadastrados</h4>
+        <div v-if="pacientes.length > 0">
+            <p v-for="paciente in carregandoPacientes">{{paciente.nome}}</p>
+        </div>
+        <div v-else>
+            <i>Nenhum paciente cadastrado até o momento</i>
+        </div>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                pacientes: [],
+            },
+            methods: {
+                adicionarPaciente() {
+                    this.pacientes.push({
+                        nome: inputNome.value,
+                        idade: inputIdade.value,
+                        plano: inputPlano.value,
+                    });
+                }
+            }, computed: {
+                adicionarUltimoPaciente() {
+                    let paciente = '';
+                        paciente += "Nome:  "+this.pacientes[this.pacientes.length - 1].nome +" , ";
+                        paciente += "Idade: "+this.pacientes[this.pacientes.length - 1].idade+" , ";
+                        paciente += "Plano: "+this.pacientes[this.pacientes.length - 1].plano;
+                    
+                        return paciente;
+                },
+
+                pacientesOuro() {
+                    return this.pacientes.filter(item => item.plano == 'Ouro');
+                },
+
+                carregandoPacientes() {
+                    return this.pacientes.map(paciente => ({
+                        nome : paciente.nome,
+                        idade : paciente.idade,
+                        plano : paciente.plano
+                    }));
+                }
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tag template</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+</head>
+<body>
+    <div id="app">
+        <template v-if="situacao">
+            <p>Situação ok</p>
+        </template>
+
+        <template v-for="n in 10">
+            <p>2 X {{n}} = {{2 * n}}</p>
+        </template>
+
+        <p>A tag template é um recurso do HTML5, sua utilização serve para não renderização nos browsers ao inspecionar um código</p>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                situacao: true,
+            },
+            methods: {
+
+            }
+        });
+    </script>
+</body>
+</html>
