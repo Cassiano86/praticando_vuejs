@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>V-text</title>
+    <title>Diretiva V-once</title>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
 </head>
 <body>
@@ -14,8 +14,8 @@
         <input type="number" id="valor" step='0.01' :min="min">
         <button @click="creditar()">Creditar</button>
         <button @click="debitar()">Debitar</button>
-        <br><br><br>
-        h5{A diretiva v-once permite renderizar um data-binding apenas uma vez, no exemplo acima caso não houvesse aplicado a diretiva v-once o saldo inicial seria renderizo quando as funções de creditar e debitar fossem acionadas}
+        <br>
+        <h3>A diretiva v-once permite renderizar um data-binding apenas uma vez, no exemplo acima caso não houvesse aplicado a diretiva v-once o saldo inicial seria renderizo quando as funções de creditar ou debitar fossem acionadas</h3>
     </div>
 
     <script>

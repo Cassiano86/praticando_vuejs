@@ -23,26 +23,32 @@
 <body>
     <div id="app">
         <a :href="site" target='_blank'>Site</a>
+        
         <p class='negrito' :class="checked ? verde : vermelho">Digite seu texto</p>
-        <input type="text" :placeholder="placeholder" name="" id=""> 
-        <input type="checkbox" @click="verificarChecked()" id="scales" name="scales" :checked='checked'><br><br><br><br><br><br><br><br> 
-        <img 
-            :src="diretorio+fotos[0].foto" 
-             :alt="fotos[0].alt ? fotos[0].alt : 'Sem descrição'" 
-             @mouseover.once="mostrarDescricao(fotos[0].alt)"
-        >
+        
+        <input type="text" :placeholder="placeholder" v-model="texto" name="texto" id="texto"> 
+        <input type="checkbox" @click="verificarChecked()" id="scales" name="scales" :checked='checked'><br> 
+        
+        {{texto}}
+        <div :class="d_flex">
+            <img 
+                :src="diretorio+fotos[0].foto" 
+                :alt="fotos[0].alt ? fotos[0].alt : 'Sem descrição'" 
+                @mouseover.once="mostrarDescricao(fotos[0].alt)"
+            >
 
-        <img 
-            :src="diretorio+fotos[1].foto" 
-            :alt="fotos[1].alt ? fotos[1].alt : 'Sem descrição'"
-            @click='mostrarDescricao(fotos[1].alt)'
-        >
+            <img 
+                :src="diretorio+fotos[1].foto" 
+                :alt="fotos[1].alt ? fotos[1].alt : 'Sem descrição'"
+                @click='mostrarDescricao(fotos[1].alt)'
+            >
 
-        <img 
-            :src="diretorio+fotos[2].foto" 
-            :alt="fotos[2].alt ? fotos[2].alt : 'Sem descrição'"
-            @dblclick="mostrarDescricao(fotos[2].alt)"
-        >
+            <img 
+                :src="diretorio+fotos[2].foto" 
+                :alt="fotos[2].alt ? fotos[2].alt : 'Sem descrição'"
+                @dblclick="mostrarDescricao(fotos[2].alt)"
+            >
+        </div>
     </div>
 
     <script>
@@ -52,6 +58,7 @@
                 site: 'https://www.guiavalehistorico.com',
                 verde:'verde',
                 vermelho:'vermelho',
+                d_flex:'display:flex;',
                 placeholder: 'Digite um texto',
                 checked:false,
                 diretorio: 'img/',
@@ -60,6 +67,7 @@
                             {foto : 'laravel_logo.png', alt : 'Logo do Laravel'},
                             {foto : 'revolver_logo.jpg',alt : 'Logo do albúm revolver'}
                         ],
+                texto : ''
             },
             methods : {
                 verificarChecked() {

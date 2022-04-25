@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Componente mounted</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+</head>
+<body>
+    <div id="app">
+        <h5>O componente mounted é invocado após a intância ter sido montada, o valor do elemento inicialmente era 5, porém foi adicionado +5</h5>
+        {{adicionarComputed}}
+    </div>
+    <script>
+        new Vue({
+            el : '#app',
+            data : {
+                valor : 5,
+            },
+            methods : {
+                adicionar(){
+                    return this.valor +=5;
+                },
+
+                subtrair(){
+                    return this.valor -=2;
+                }
+            },
+
+            computed: {
+                adicionarComputed(){
+                    return this.adicionar();
+                }
+            },
+        });
+    </script>
+</body>
+</html>
